@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wingo Analyst Access</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: radial-gradient(circle at center, #0f0f0f, #020202);
+      color: #33ff33;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: sans-serif;
+    }
+    .container {
+      width: 360px;
+      background: linear-gradient(to bottom right, #0a0a0a, #1c1c1c);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 4px 30px rgba(0, 255, 0, 0.5);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border: 2px solid #33ff33;
+    }
+    .logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      object-fit: cover;
+      border: 2px solid #33ff33;
+    }
+    .brand {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #33ff33;
+    }
+    h2 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    a.button {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 2px solid red;
+      color: red;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s, color 0.3s;
+      font-weight: bold;
+    }
+    a.button:hover {
+      background-color: red;
+      color: white;
+    }
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid #555;
+      background: #000;
+      color: #33ff33;
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .login-button {
+      margin-top: 10px;
+      font-weight: bold;
+      width: 100%;
+      text-align: center;
+    }
+    #error {
+      color: red;
+      margin-top: 10px;
+      font-size: 14px;
+      min-height: 20px;
+    }
+    .password-container {
+      width: 100%;
+      margin: 15px 0;
+    }
+    .steps {
+      margin: 10px 0;
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="step1">
+    <!-- আপনার ফোনের লোগো পাথ দিন নিচে -->
+    <img src="MRSEXX.png" alt="Wingo Logo" class="logo" />
+    <div class="brand"> 𝐖ɪɴɢᴏ 𝐀ɴᴀʟʏsɪsʜ</div>
+    <h2>আমাদের ইউটিউব চ্যানেলটি সাবস্ক্রাইব করে আমাদের সাপোর্ট করুন</h2>
+    
+    <a class="button" href="https://youtube.com/@technical-tom" target="_blank" onclick="nextStep()">SUBSCRIBE</a>
+  </div>
+
+  <div class="container" id="step2" style="display:none;">
+    <img src="MRSEXX.png" alt="Wingo Logo" class="logo" />
+    <div class="brand"> 𝐖ɪɴɢᴏ 𝐀ɴᴀʟʏsɪsʜ</div>
+    <h2>নিয়মিত আপডেট সংক্রান্ত হ্যাক পেতে এবং পাসওয়ার্ড পেতে আমাদের টেলিগ্রাম চ্যানেলে জয়েন করুন</h2>
+    
+    <a class="button" href="https://t.me/BDT_404_TEAM" target="_blank" onclick="nextStep()">JOIN TELEGRAM</a>
+  </div>
+
+  <div class="container" id="loginForm" style="display:none;">
+    <img src="MRSEXX.png" alt="Wingo Logo" class="logo" />
+    <div class="brand">𝐖ɪɴɢᴏ 𝐀ɴᴀʟʏsɪsʜ</div>
+    <h2>এক্সক্লুসিভ কন্টেন্ট অ্যাক্সেস করতে লগইন করুন ।। লগইন করার জন্য পাসওয়ার্ড আমাদের টেলিগ্রাম চ্যানেলে আপলোড দেওয়া আছে আপনার একটা জিনিস মাথায় রাখতে হবে যেহেতু এটা হ্যাক অবশ্যই আপনাদের ৭-৮ স্টেপ ব্রেকআপ রাখতে হবে </h2>
+    
+    
+    <div class="password-container">
+      <input type="password" id="password" placeholder="এন্টার পাসওয়ার্ড" autocomplete="off">
+    </div>
+    
+    <a class="button login-button" href="#" onclick="login()">✔️ LOGIN</a>
+    <p id="error"></p>
+  </div>
+
+  <script>
+    let step = 1;
+
+    function nextStep() {
+      document.getElementById(`step${step}`).style.display = "none";
+      step++;
+      if (step === 3) {
+        document.getElementById("loginForm").style.display = "flex";
+      } else {
+        document.getElementById(`step${step}`).style.display = "flex";
+      }
+    }
+
+    function login() {
+      const password = document.getElementById("password").value;
+      const correctPassword = "KING NAJMUL"; // আপনার পাসওয়ার্ড এখানে সেট করুন
+
+      if (password === correctPassword) {
+        window.location.href = "https://wingoanalyst.com/#/wingo_1m";
+      } else {
+        document.getElementById("error").innerText = "❌ ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন";
+        document.getElementById("password").value = "";
+        document.getElementById("password").focus();
+      }
+    }
+
+    // Enter key press event for password field
+    document.getElementById("password").addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        login();
+      }
+    });
+  </script>
+
+</body>
+  </html>
