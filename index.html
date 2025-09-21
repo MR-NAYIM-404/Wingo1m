@@ -1,167 +1,166 @@
-<!DOCTYPE html>
-<html lang="bn">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wingo Analyst Access</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MMT VIP — AUTO MARKET PREDICTOR</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
     body {
-      background: radial-gradient(circle at center, #0f0f0f, #020202);
-      color: #33ff33;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      font-family: sans-serif;
-    }
-    .container {
-      width: 360px;
-      background: linear-gradient(to bottom right, #0a0a0a, #1c1c1c);
-      border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 4px 30px rgba(0, 255, 0, 0.5);
-      text-align: center;
+      background-color: #0b0f1a;
+      font-family: 'Orbitron', sans-serif;
+      color: #00f7ff;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      border: 2px solid #33ff33;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
     }
-    .logo {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin: 0 auto 10px;
-      object-fit: cover;
-      border: 2px solid #33ff33;
-    }
-    .brand {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #33ff33;
-    }
-    h2 {
-      font-size: 16px;
-      margin-bottom: 10px;
-    }
-    a.button {
-      display: inline-block;
-      padding: 10px 20px;
-      border: 2px solid red;
-      color: red;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s, color 0.3s;
-      font-weight: bold;
-    }
-    a.button:hover {
-      background-color: red;
-      color: white;
-    }
-    input[type="password"] {
+    .card {
+      border: 2px solid #00f7ff;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 20px #00f7ff;
+      max-width: 350px;
       width: 100%;
-      padding: 12px;
-      border-radius: 5px;
-      border: 1px solid #555;
-      background: #000;
-      color: #33ff33;
+    }
+    h1 {
+      color: #00f7ff;
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .time {
       margin: 10px 0;
       font-size: 16px;
+      color: #ffcc00;
     }
-    .login-button {
-      margin-top: 10px;
-      font-weight: bold;
-      width: 100%;
-      text-align: center;
+    .signal-box {
+      background: #111;
+      padding: 10px;
+      border-radius: 8px;
+      margin: 10px 0;
     }
-    #error {
-      color: red;
-      margin-top: 10px;
-      font-size: 14px;
-      min-height: 20px;
-    }
-    .password-container {
-      width: 100%;
+    .numbers {
+      display: flex;
+      justify-content: center;
       margin: 15px 0;
     }
-    .steps {
-      margin: 10px 0;
-      color: #aaa;
-      font-size: 14px;
+    .number {
+      background: black;
+      color: #00f7ff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 8px;
+      font-size: 20px;
+      box-shadow: 0 0 15px #00f7ff;
+    }
+    .telegram {
+      background: #0088cc;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-top: 15px;
+    }
+    .countdown {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #ff4444;
     }
   </style>
 </head>
 <body>
 
-  <div class="container" id="step1">
-    <!-- আপনার ফোনের লোগো পাথ দিন নিচে -->
-    <img src="MRSEXX.png" alt="Wingo Logo" class="logo" />
-    <div class="brand"> 𝐖ɪɴɢᴏ 𝐀ɴᴀʟʏsɪsʜ</div>
-    <h2>আমাদের ইউটিউব চ্যানেলটি সাবস্ক্রাইব করে আমাদের সাপোর্ট করুন</h2>
-    
-    <a class="button" href="https://youtube.com/@technical-tom" target="_blank" onclick="nextStep()">SUBSCRIBE</a>
+<div class="card">
+  <h1>⚡ MMT VIP ⚡</h1>
+  <div class="time" id="bdTime">Loading Bangladesh Time...</div>
+  <div class="signal-box">
+    <p>Signal: <span id="signal">Waiting...</span></p>
   </div>
-
-  <div class="container" id="step2" style="display:none;">
-    <img src="MRSEXX.png" alt="Wingo Logo" class="logo" />
-    <div class="brand"> 𝐖ɪɴɢᴏ 𝐀ɴᴀʟʏsɪsʜ</div>
-    <h2>নিয়মিত আপডেট সংক্রান্ত হ্যাক পেতে এবং পাসওয়ার্ড পেতে আমাদের টেলিগ্রাম চ্যানেলে জয়েন করুন</h2>
-    
-    <a class="button" href="https://t.me/BDT_404_TEAM" target="_blank" onclick="nextStep()">JOIN TELEGRAM</a>
+  <div class="numbers">
+    <div class="number" id="num1">-</div>
+    <div class="number" id="num2">-</div>
   </div>
+  <div class="countdown">Next prediction in <span id="timer">30</span>s</div>
 
-  <div class="container" id="loginForm" style="display:none;">
-    <img src="MRSEXX.png" alt="Wingo Logo" class="logo" />
-    <div class="brand">𝐖ɪɴɢᴏ 𝐀ɴᴀʟʏsɪsʜ</div>
-    <h2>এক্সক্লুসিভ কন্টেন্ট অ্যাক্সেস করতে লগইন করুন ।। লগইন করার জন্য পাসওয়ার্ড আমাদের টেলিগ্রাম চ্যানেলে আপলোড দেওয়া আছে আপনার একটা জিনিস মাথায় রাখতে হবে যেহেতু এটা হ্যাক অবশ্যই আপনাদের ৭-৮ স্টেপ ব্রেকআপ রাখতে হবে </h2>
-    
-    
-    <div class="password-container">
-      <input type="password" id="password" placeholder="এন্টার পাসওয়ার্ড" autocomplete="off">
-    </div>
-    
-    <a class="button login-button" href="#" onclick="login()">✔️ LOGIN</a>
-    <p id="error"></p>
-  </div>
+  <!-- ✅ Direct Link Ad (Telegram এর আগে Ad Link ওপেন হবে) -->
+  <a href="https://www.revenuecpmgate.com/s5hg1minb?key=899de542ae8030d178fd6675f390ab5c"
+     target="_blank"
+     onclick="window.open('https://t.me/BDT_404_TEAM','_blank'); return false;"
+     class="telegram">Join Telegram</a>
+</div>
 
-  <script>
-    let step = 1;
+<!-- ✅ Popunder Script -->
+<script type='text/javascript' src='//pl25802385.revenuecpmgate.com/5d/ad/af/5dadaf4c4f0585402c0992cbc69e8ce1.js'></script>
 
-    function nextStep() {
-      document.getElementById(`step${step}`).style.display = "none";
-      step++;
-      if (step === 3) {
-        document.getElementById("loginForm").style.display = "flex";
-      } else {
-        document.getElementById(`step${step}`).style.display = "flex";
-      }
-    }
+<script>
+  const API_URL = "https://onlinelivedatapradiction.api"; // Offline API placeholder
 
-    function login() {
-      const password = document.getElementById("password").value;
-      const correctPassword = "KING NAJMUL"; // আপনার পাসওয়ার্ড এখানে সেট করুন
-
-      if (password === correctPassword) {
-        window.location.href = "https://wingoanalyst.com/#/wingo_1m";
-      } else {
-        document.getElementById("error").innerText = "❌ ভুল পাসওয়ার্ড! সঠিক পাসওয়ার্ড দিন";
-        document.getElementById("password").value = "";
-        document.getElementById("password").focus();
-      }
-    }
-
-    // Enter key press event for password field
-    document.getElementById("password").addEventListener("keypress", function(event) {
-      if (event.key === "Enter") {
-        login();
-      }
+  function getDhakaParts() {
+    const fmt = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Dhaka',
+      hour12: false,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
     });
-  </script>
+    const parts = fmt.formatToParts(new Date());
+    const out = { hour: 0, minute: 0, second: 0 };
+    parts.forEach(p => {
+      if (p.type === 'hour') out.hour = Number(p.value);
+      if (p.type === 'minute') out.minute = Number(p.value);
+      if (p.type === 'second') out.second = Number(p.value);
+    });
+    return out;
+  }
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function updateBdTimeDisplay(parts) {
+    document.getElementById("bdTime").textContent =
+      `BD Time: ${pad(parts.hour)}:${pad(parts.minute)}:${pad(parts.second)}`;
+  }
+
+  function generatePrediction() {
+    const num1 = Math.floor(Math.random() * 10);
+    const num2 = Math.floor(Math.random() * 10);
+    document.getElementById("num1").textContent = num1;
+    document.getElementById("num2").textContent = num2;
+    document.getElementById("signal").textContent = (num1 + num2) > 9 ? "Big" : "Small";
+  }
+
+  let lastDhakaSecond = null;
+  function tick() {
+    const parts = getDhakaParts();
+    updateBdTimeDisplay(parts);
+
+    const sec = parts.second;
+    const rem = sec % 30 === 0 ? 30 : (30 - (sec % 30));
+    document.getElementById("timer").textContent = rem;
+
+    if (sec % 30 === 0 && lastDhakaSecond !== sec) {
+      generatePrediction();
+    }
+    lastDhakaSecond = sec;
+  }
+
+  setInterval(tick, 1000);
+  tick();
+
+  // Password check
+  const password = "MMTXDKWIN";
+  const userInput = prompt("📌Enter Password to Access:");
+  if(userInput !== password){
+    document.body.innerHTML = "<h2 style='color:red;text-align:center;'>Access Denied!</h2>";
+  }
+</script>
 
 </body>
-  </html>
+</html>
